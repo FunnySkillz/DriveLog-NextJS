@@ -4,6 +4,7 @@
 import { SignInForm } from "@/components/auth/SignInForm";
 import { useQuery, Unauthenticated, Authenticated } from "convex/react";
 import { api } from "../../convex/_generated/api";
+import { CompanySetup } from "@/components/company/CompanySetup";
 
 export default function HomePage() {
   const loggedInUser = useQuery(api.users.getCurrentUserProfile);
