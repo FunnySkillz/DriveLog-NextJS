@@ -4,6 +4,8 @@ import { api } from "../../../../convex/_generated/api";
 
 import { CompanySettings } from "./CompanySettings";
 import { Company, UserWithProfile } from "@/components/shared/types/company";
+import { DriverManagement } from "./DriverManagement";
+import { TripOverview } from "./TripOverview";
 
 interface AdminDashboardProps {
   user: UserWithProfile;
