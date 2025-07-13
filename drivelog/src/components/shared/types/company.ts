@@ -1,5 +1,7 @@
 // /types/models.ts
 
+import { Id } from "../../../../convex/_generated/dataModel";
+
 export type Role = "admin" | "driver";
 
 export interface Company {
@@ -35,7 +37,7 @@ export interface UserWithProfile extends User {
 export interface Vehicle {
   _id: string;
   _creationTime: number;
-  companyId: string;
+  companyId?: string;
   brand: string;
   model: string;
   licensePlate: string;
@@ -44,13 +46,15 @@ export interface Vehicle {
 }
 
 export interface Driver {
-  _id: string;
+  _id: Id<"user_profiles">;
   _creationTime: number;
-  companyId: string;
-  userId: string;
+  companyId?: Id<"companies">; // correct type
+  userId: Id<"users">;
   name: string;
-  phone?: string;
   email?: string;
+  phone?: string;
+  role: "admin" | "driver";
+  assignedVehicles?: (Vehicle | null)[];
 }
 
 export interface Trip {
