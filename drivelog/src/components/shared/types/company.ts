@@ -73,10 +73,15 @@ export interface Trip {
   kmEnd: number;
   purpose?: string;
   date: string; // ISO format
+
+  timeStart?: string;
+  timeEnd?: string;
+  notes?: string;
+
 }
 
 export interface EnrichedTrip extends Trip {
   user?: UserProfile;
-  vehicle?: Vehicle;
+  vehicle?: Vehicle | null;
 }
 

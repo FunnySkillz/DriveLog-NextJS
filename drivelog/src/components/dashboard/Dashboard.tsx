@@ -1,8 +1,9 @@
-import { Company } from "../shared/types/company";
+import { Company, UserWithProfile } from "../shared/types/company";
 import { AdminDashboard } from "./admin/AdminDashboard";
+import { DriverDashboard } from "./driver/DriverDashboard";
 
 interface DashboardProps {
-  user: any;
+  user: UserWithProfile;
   company: Company;
 }
 

@@ -207,7 +207,9 @@ export function DriverManagement() {
                   {vehicles
                     .filter(
                       (v) =>
-                        !driver.assignedVehicles?.some((av) => av._id === v._id)
+                        !driver.assignedVehicles?.some(
+                          (av) => av && av._id === v._id
+                        )
                     )
                     .map((vehicle) => (
                       <option key={vehicle._id} value={vehicle._id}>
