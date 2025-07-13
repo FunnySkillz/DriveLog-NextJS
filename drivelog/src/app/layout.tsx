@@ -1,4 +1,5 @@
 // app/layout.tsx
+"use client";
 
 import { SignOutButton } from "@/components/auth/SignOutButton";
 import { Authenticated } from "convex/react";

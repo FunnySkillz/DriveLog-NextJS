@@ -84,6 +84,7 @@ export const inviteDriver = mutation({
     // For now, we'll create a placeholder profile
     // In a real app, you'd send an invitation email
     return await ctx.db.insert("user_profiles", {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       userId: "pending" as any, // This would be set when they actually sign up
       companyId: profile.companyId,
       role: "driver",

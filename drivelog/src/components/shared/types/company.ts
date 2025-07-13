@@ -11,7 +11,7 @@ export interface Company {
   address?: string;
   industry?: string;
   isRentalCompany: boolean;
-  userId: string; // Creator / owner of the company
+  userId?: string; // Creator / owner of the company
 }
 
 export interface User {

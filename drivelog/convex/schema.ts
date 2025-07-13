@@ -1,6 +1,5 @@
 import { defineSchema, defineTable } from "convex/server";
 import { v } from "convex/values";
-import { authTables } from "@convex-dev/auth/server";
 
 const applicationTables = {
   companies: defineTable({
@@ -75,13 +74,23 @@ const applicationTables = {
     role: v.union(v.literal("admin"), v.literal("driver")),
     name: v.string(),
     email: v.string(),
+    
   })
     .index("by_user", ["userId"])
     .index("by_company", ["companyId"])
     .index("by_email", ["email"]),
+
+  users: defineTable({
+    tokenIdentifier: v.string(),
+    name: v.optional(v.string()),
+    email: v.optional(v.string()),
+    phone: v.optional(v.string()),
+  })
+    .index("by_token", ["tokenIdentifier"])
+    .index("by_email", ["email"])
+    .index("by_phone", ["phone"]),
 };
 
 export default defineSchema({
-  ...authTables,
   ...applicationTables,
 });

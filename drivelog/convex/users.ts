@@ -10,19 +10,22 @@ export const getCurrentUserProfile = query({
       return null;
     }
 
-    const user = await ctx.db.get(userId);
+    const user = await ctx.db.query("users")
+      .withIndex("by_token", (q) => q.eq("tokenIdentifier", userId))
+      .first();
+
     if (!user) {
       return null;
     }
 
     const profile = await ctx.db
       .query("user_profiles")
-      .withIndex("by_user", (q) => q.eq("userId", userId))
+      .withIndex("by_user", (q) => q.eq("userId", user._id))
       .first();
 
     return {
-      ...user,
-      profile,
+      ...user,           // includes _id, name, email, tokenIdentifier, etc.
+      profile: profile ?? null,
     };
   },
 });
@@ -38,9 +41,17 @@ export const updateProfile = mutation({
       throw new Error("Not authenticated");
     }
 
+    const user = await ctx.db.query("users")
+      .withIndex("by_token", (q) => q.eq("tokenIdentifier", userId))
+      .first();
+
+    if (!user) {
+      throw new Error("User not found");
+    }
+
     const profile = await ctx.db
       .query("user_profiles")
-      .withIndex("by_user", (q) => q.eq("userId", userId))
+      .withIndex("by_user", (q) => q.eq("userId", user._id))
       .first();
 
     if (profile) {
@@ -50,12 +61,12 @@ export const updateProfile = mutation({
       });
     }
 
-    // Also update the user record
-    await ctx.db.patch(userId, {
+    // Also update user record
+    await ctx.db.patch(user._id, {
       name: args.name,
       email: args.email,
     });
 
-    return userId;
+    return user._id;
   },
 });

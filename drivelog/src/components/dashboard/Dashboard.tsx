@@ -1,3 +1,5 @@
+"use client";
+
 import { Company, UserWithProfile } from "../shared/types/company";
 import { AdminDashboard } from "./admin/AdminDashboard";
 import { DriverDashboard } from "./driver/DriverDashboard";
