@@ -6,6 +6,7 @@ import { CompanySettings } from "./CompanySettings";
 import { Company, UserWithProfile } from "@/components/shared/types/company";
 import { DriverManagement } from "./DriverManagement";
 import { TripOverview } from "./TripOverview";
+import { VehicleManagement } from "./VehicleManagement";
 
 interface AdminDashboardProps {
   user: UserWithProfile;

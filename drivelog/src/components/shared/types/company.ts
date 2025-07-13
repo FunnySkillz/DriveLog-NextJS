@@ -35,14 +35,18 @@ export interface UserWithProfile extends User {
 }
 
 export interface Vehicle {
-  _id: string;
+  _id: Id<"vehicles">;
   _creationTime: number;
-  companyId?: string;
+  companyId: Id<"companies">;
   brand: string;
   model: string;
   licensePlate: string;
-  fuelType?: string;
-  mileage?: number;
+  vin: string;
+  fuelType: "Petrol" | "Diesel" | "Electric" | "Hybrid";
+  year: number;
+  mileage: number;
+  isPublic: boolean;
+  notes?: string;
 }
 
 export interface Driver {
