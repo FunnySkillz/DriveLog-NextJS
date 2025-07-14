@@ -1,4 +1,3 @@
-// app/layout.tsx
 import { Metadata } from "next";
 import { ConvexClientProvider } from "./ConvexClientProvider";
 import { ClientLayout } from "./ClientLayout";
