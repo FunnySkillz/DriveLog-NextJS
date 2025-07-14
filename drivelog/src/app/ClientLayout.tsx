@@ -1,11 +1,11 @@
+// app/ClientLayout.tsx
 "use client";
 
-import { ReactNode } from "react";
-import { Authenticated } from "convex/react";
 import { Toaster } from "sonner";
 import { SignOutButton } from "@/components/auth/SignOutButton";
+import { Authenticated } from "convex/react";
 
-export default function ClientLayout({ children }: { children: ReactNode }) {
+export function ClientLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <header className="sticky top-0 z-10 bg-white/80 backdrop-blur-sm h-16 flex justify-between items-center border-b shadow-sm px-4">
@@ -26,7 +26,6 @@ export default function ClientLayout({ children }: { children: ReactNode }) {
       </header>
 
       <main className="flex-1">{children}</main>
-
       <Toaster />
     </>
   );
